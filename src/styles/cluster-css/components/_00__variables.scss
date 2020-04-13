@@ -1,0 +1,13 @@
+/*
+component: 01__container
+note: the fill-height/width/space only work if the container
+  is within an element with a fixed height or an element with
+  the class .filler
+classes: 
+  .container/.wrapper
+  → .fill-height
+  → .fill-width
+  → .fill-space (width & height)
+*/
+$container__max-width: 1440px !default;
+$container__padding: 0 1rem !default;

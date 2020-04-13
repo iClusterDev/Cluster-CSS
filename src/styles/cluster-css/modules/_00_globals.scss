@@ -1,3 +1,7 @@
+// FIXME
+// add the root element
+// add the body element
+
 // html
 html {
   box-sizing: border-box;
@@ -8,13 +12,23 @@ html {
   box-sizing: inherit;
 }
 
-// blockquote
+header,
+main,
+footer {
+  position: relative;
+}
+
+// FIXME
+// this should on its separate file
+// images && icons (use svg)
 blockquote {
   margin: 1em 0;
   padding-left: 2em;
   border-left: solid 4px $ccss-primary-color;
 }
 
+// FIXME
+// this should on its separate file
 // images && icons (use svg)
 img {
   display: block;
