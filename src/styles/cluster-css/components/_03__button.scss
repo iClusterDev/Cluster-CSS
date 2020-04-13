@@ -1,0 +1,154 @@
+/*
+component: 03__buttom
+dependencies: 00__variables
+classes: 
+  .btn
+  → .btn-outlined
+  → .btn-text
+  → .btn-disabled
+  → .btn-large
+  → .btn-small
+  → .btn-squared
+  → .btn-rounded
+  → .btn-block
+*/
+
+// FIXME
+// armonize the box shadows
+// double check on materialize
+// the tap thing
+.btn,
+a.btn,
+button.btn,
+input[type="submit"].btn,
+input[type="button"].btn {
+  // shared variables
+  // FIXME
+  // a lot of variables here
+  // are unecessary
+  $-btn-color: lighten($btn__background, 100) !default;
+  $-btn-border: solid 1px transparent;
+  // FIXME
+  // the margin should be defined
+  // in a more sensible way?
+  // $-btn-margin: 0 2px 1rem !default;
+  $-btn-margin: 0 !default;
+  $-btn-padding: 1.5rem !default;
+  $-btn-min-width: 6rem !default;
+  $-btn-min-height: 3rem !default;
+  $-btn-default-hover: lighten($btn__background, 10);
+  $-btn-default-active: lighten($btn__background, 20);
+  $-btn-outlined-hover: lighten($btn__background, 50);
+  $-btn-outlined-active: lighten($btn__background, 55);
+
+  // reset
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  // default buttons
+  min-height: $-btn-min-height;
+  min-width: $-btn-min-width;
+  padding: 0 $-btn-padding;
+  margin: $-btn-margin;
+  color: $-btn-color;
+  border: $-btn-border;
+  font-size: $btn__font-size;
+  font-weight: $btn__font-weight;
+  border-radius: $btn__border-radius;
+  letter-spacing: $btn__letter-spacing;
+  text-transform: $btn__font-style;
+  background-color: $btn__background;
+  transition: all 0.2s;
+  &:hover {
+    color: $-btn-color;
+    background-color: $-btn-default-hover;
+    &:active {
+      background-color: $-btn-default-active;
+    }
+  }
+  &.btn-disabled {
+    opacity: 40%;
+    box-shadow: none !important;
+    background-color: $btn__background !important;
+    cursor: default;
+  }
+
+  // raised buttons
+  &.btn-raised {
+    $-btn-static-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.95) !default;
+    $-btn-raised-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.95) !default;
+
+    box-shadow: $-btn-static-shadow;
+
+    &:hover {
+      box-shadow: $-btn-raised-shadow;
+    }
+  }
+
+  // outlined buttons
+  &.btn-outlined {
+    box-shadow: none;
+    color: $btn__background;
+    border-color: $btn__background;
+    background-color: transparent;
+    &:hover {
+      background-color: $-btn-outlined-hover;
+      &:active {
+        background-color: $-btn-outlined-active;
+      }
+    }
+    &.btn-disabled {
+      background-color: transparent !important;
+    }
+  }
+
+  // text buttons
+  &.btn-text {
+    box-shadow: none;
+    color: $btn__background;
+    border-color: transparent;
+    background-color: transparent;
+    &:hover {
+      background-color: $-btn-outlined-hover;
+      &:active {
+        background-color: $-btn-outlined-active;
+      }
+    }
+    &.btn-disabled {
+      background-color: transparent !important;
+    }
+  }
+
+  // large buttons
+  &.btn-large {
+    padding: 0 calc(#{$-btn-padding} * 2);
+    min-height: calc(#{$-btn-min-height} * 1.25);
+  }
+
+  &.btn-small {
+    padding: 0 calc(#{$-btn-padding} / 2);
+    min-height: calc(#{$-btn-min-height} / 1.25);
+    font-size: 0.8rem;
+  }
+
+  // rounded buttons
+  &.btn-rounded {
+    border-radius: $-btn-min-width;
+  }
+
+  // squared buttons
+  &.btn-squared {
+    border-radius: 0;
+  }
+
+  // block buttons
+  &.btn-block {
+    width: 100%;
+  }
+}

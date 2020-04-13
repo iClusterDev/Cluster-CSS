@@ -1,0 +1,34 @@
+/*
+typography variables
+*/
+$font-primary-stack: "Montserrat", "Helvetica Neue", sans-serif !default;
+$font-secondary-stack: "Montserrat", "serif" !default;
+
+$type-scale-ratio: 1.333 !default;
+$text-mobile-size: 13px !default;
+$text-tablet-size: 14px !default;
+$text-laptop-size: 15px !default;
+$body-line-height: 1.75 !default;
+$head-line-height: 1.15 !default;
+
+/*
+breakpoints
+*/
+$mobile-screen-max-width: 600px;
+$tablet-screen-max-width: 992px;
+$laptop-screen-max-width: 1200px;
+$large-screen-max-width: 1440px;
+
+/*
+theme variables
+*/
+$primary-color: #b8336a !default;
+$secondary-color: #2e5266 !default;
+$tertiary-color: #8d99ae !default;
+$offblack-color: rgba(0, 0, 0, 0.87) !default;
+$mutedblack-color: rgba(0, 0, 0, 0.57) !default;
+$success-color: #4caf50 !default;
+$warning-color: #ffeb3b !default;
+$error-color: #f44336 !default;
+$link-color: #039be5 !default;
+$text-color: $offblack-color !default;

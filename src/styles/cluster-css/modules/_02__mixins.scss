@@ -1,0 +1,81 @@
+/*
+typescale (mainly for typography)
+*/
+@mixin typescale($base-size, $ratio) {
+  h1,
+  .display-1 {
+    font-size: $base-size * pow($ratio, 5);
+  }
+
+  h2,
+  .display-2 {
+    font-size: $base-size * pow($ratio, 4);
+  }
+
+  h3,
+  .display-3 {
+    font-size: $base-size * pow($ratio, 3);
+  }
+
+  h4,
+  .display-4 {
+    font-size: $base-size * pow($ratio, 2);
+  }
+
+  h5,
+  .display-5 {
+    font-size: $base-size * pow($ratio, 1);
+  }
+
+  small,
+  .small,
+  .text-small,
+  .display-small {
+    font-size: $base-size / pow($ratio, 1);
+  }
+}
+
+/*
+media queries
+*/
+@mixin on-tablet-and-up {
+  @media only screen and (min-width: ($mobile-screen-max-width + 1px)) {
+    @content;
+  }
+}
+
+@mixin on-laptop-and-up {
+  @media only screen and (min-width: ($tablet-screen-max-width + 1px)) {
+    @content;
+  }
+}
+
+@mixin on-large-screen-and-up {
+  @media only screen and (min-width: ($laptop-screen-max-width + 1px)) {
+    @content;
+  }
+}
+
+@mixin on-xlarge-screen-and-up {
+  @media only screen and (min-width: ($large-screen-max-width + 1px)) {
+    @content;
+  }
+}
+
+@mixin on-tablet-only {
+  @media only screen and (min-width: ($mobile-screen-max-width + 1px)) and (max-width: $tablet-screen-max-width) {
+    @content;
+  }
+}
+
+@mixin on-laptop-only {
+  @media only screen and (min-width: ($tablet-screen-max-width + 1px)) and (max-width: $laptop-screen-max-width) {
+    @content;
+  }
+}
+
+@mixin on-large-screen-only {
+  @media only screen and (min-width: ($laptop-screen-max-width + 1px)) and (max-width: $large-screen-max-width) {
+    @content;
+  }
+}

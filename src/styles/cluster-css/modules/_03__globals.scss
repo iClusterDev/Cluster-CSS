@@ -1,11 +1,14 @@
-// FIXME
-// add the root element
-// add the body element
+/*
+module: 03__globals.scss
+global rules
+dependencies: 
+  - _00__variables
+*/
 
-// html
 html {
   box-sizing: border-box;
 }
+
 *,
 *:before,
 *:after {
@@ -24,7 +27,7 @@ footer {
 blockquote {
   margin: 1em 0;
   padding-left: 2em;
-  border-left: solid 4px $ccss-primary-color;
+  border-left: solid 4px $primary-color;
 }
 
 // FIXME

@@ -9,5 +9,29 @@ classes:
   → .fill-width
   → .fill-space (width & height)
 */
-$container__max-width: 1440px !default;
+$container__max-width: 992px !default;
 $container__padding: 0 1rem !default;
+
+/*
+component: 03__buttom
+dependencies: 00__variables
+classes: 
+  .btn
+  → .btn-outlined
+  → .btn-text
+  → .btn-disabled
+  → .btn-large
+  → .btn-small
+  → .btn-squared
+  → .btn-rounded
+  → .btn-block
+*/
+// FIXME
+// add border variable
+// add hover states
+$btn__background: $primary-color !default;
+$btn__font-size: 0.85rem;
+$btn__font-style: uppercase !default;
+$btn__font-weight: 400 !default;
+$btn__border-radius: 2px !default;
+$btn__letter-spacing: 0px !default;
