@@ -48,32 +48,32 @@ dependencies: ./functions
   }
 }
 
-// theme
-@mixin ccss-shades($color-value) {
-  $shade: 10;
-  @for $index from 1 to 7 {
-    &.lighten-#{$shade} {
-      background-color: lighten($color-value, $shade) !important;
-    }
-    &.darken-#{$shade} {
-      background-color: darken($color-value, $shade) !important;
-    }
-    $shade: $shade + 5;
-  }
-}
+// // theme
+// @mixin ccss-shades($color-value) {
+//   $shade: 10;
+//   @for $index from 1 to 7 {
+//     &.lighten-#{$shade} {
+//       background-color: lighten($color-value, $shade) !important;
+//     }
+//     &.darken-#{$shade} {
+//       background-color: darken($color-value, $shade) !important;
+//     }
+//     $shade: $shade + 5;
+//   }
+// }
 
-@mixin ccss-text-shades($color-value) {
-  $text-shade: 10;
-  @for $index from 1 to 7 {
-    &.text-lighten-#{$text-shade} {
-      color: lighten($color-value, $text-shade) !important;
-    }
-    &.text-darken-#{$text-shade} {
-      color: darken($color-value, $text-shade) !important;
-    }
-    $text-shade: $text-shade + 5;
-  }
-}
+// @mixin ccss-text-shades($color-value) {
+//   $text-shade: 10;
+//   @for $index from 1 to 7 {
+//     &.text-lighten-#{$text-shade} {
+//       color: lighten($color-value, $text-shade) !important;
+//     }
+//     &.text-darken-#{$text-shade} {
+//       color: darken($color-value, $text-shade) !important;
+//     }
+//     $text-shade: $text-shade + 5;
+//   }
+// }
 
 // visibility
 @mixin visibility($-display-type) {
