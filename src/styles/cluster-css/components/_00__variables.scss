@@ -14,7 +14,6 @@ $container__padding: 0 1rem !default;
 
 /*
 component: 03__buttom
-dependencies: 00__variables
 classes: 
   .btn
   → .btn-outlined
@@ -25,10 +24,8 @@ classes:
   → .btn-squared
   → .btn-rounded
   → .btn-block
+  → .btn-raised
 */
-// FIXME
-// add border variable
-// add hover states
 $btn__background: $primary-color !default;
 $btn__font-size: 0.85rem;
 $btn__font-style: uppercase !default;

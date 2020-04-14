@@ -9,21 +9,17 @@
 #buttons {
   .content {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 1rem;
     row-gap: 1rem;
-  }
-  .content-2,
-  .content-3 {
-    display: grid;
-    column-gap: 1rem;
-  }
 
-  .content-2 {
-    grid-template-columns: repeat(2, 1fr);
-  }
+    @include on-tablet-and-up {
+      grid-template-columns: repeat(3, 1fr);
+    }
 
-  .content-3 {
-    grid-template-columns: repeat(3, 1fr);
+    .item {
+      border: solid 1px #9999;
+      min-height: 150px;
+    }
   }
 }
