@@ -24,6 +24,9 @@
 }
 
 #theme {
+  code {
+    padding: 0 0.25rem;
+  }
   .content {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
