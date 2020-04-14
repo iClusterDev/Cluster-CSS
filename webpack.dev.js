@@ -25,6 +25,10 @@ module.exports = merge(common, {
           "sass-loader",
         ],
       },
+      {
+        test: /\.(eot|gif|otf|png|svg|ttf|woff)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: ["file-loader"],
+      },
     ],
   },
 });
