@@ -8,7 +8,7 @@ module.exports = merge(common, {
   stats: {
     children: false,
     modules: false,
-    assets: false
+    assets: false,
   },
   plugins: [...HtmlWebpackPlugins("./src")],
   module: {
@@ -19,12 +19,12 @@ module.exports = merge(common, {
           "style-loader",
           {
             loader: "css-loader",
-            options: { importLoaders: 1 }
+            options: { importLoaders: 1 },
           },
           "postcss-loader",
-          "sass-loader"
-        ]
-      }
-    ]
-  }
+          "sass-loader",
+        ],
+      },
+    ],
+  },
 });

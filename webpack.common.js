@@ -1,17 +1,17 @@
 const fs = require("fs");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const getHtmlPages = srcDir => {
+const getHtmlPages = (srcDir) => {
   const pages = fs.readdirSync(srcDir, (err, files) => {
     if (err) reject(new Error(`Error: Unable to scan ${srcDir}`));
     return files;
   });
   return pages
-    .map(page => {
+    .map((page) => {
       const match = page.match(/\.html$/);
       return match ? match.input : null;
     })
-    .filter(page => {
+    .filter((page) => {
       return page;
     });
 };
@@ -19,11 +19,11 @@ const getHtmlPages = srcDir => {
 const HtmlWebpackPlugins = (srcDir, minify = {}) => {
   const pages = getHtmlPages(srcDir);
   if (!Array.isArray(pages)) return [];
-  return pages.map(page => {
+  return pages.map((page) => {
     return new HtmlWebpackPlugin({
       filename: page,
       template: `${srcDir}/${page}`,
-      minify: { ...minify }
+      minify: { ...minify },
     });
   });
 };
@@ -34,7 +34,7 @@ const common = {
     rules: [
       {
         test: /\.html$/,
-        use: [{ loader: "html-loader" }]
+        use: [{ loader: "html-loader" }],
       },
       {
         test: /\.(svg|png|jpeg|jpg|gif)$/,
@@ -43,8 +43,8 @@ const common = {
             loader: "file-loader",
             options: {
               name: "[name]-[contenthash].[ext]",
-              esModule: false
-            }
+              esModule: false,
+            },
           },
           {
             // FIXME enable in prod only?
@@ -52,22 +52,22 @@ const common = {
             options: {
               mozjpeg: {
                 progressive: true,
-                quality: 65
+                quality: 65,
               },
               optipng: {
-                optimizationLevel: 3
+                optimizationLevel: 3,
               },
               pngquant: {
                 speed: 4,
-                quality: [0.65, 0.9]
+                quality: [0.65, 0.9],
               },
               gifsicle: {
                 interlaced: false,
-                optimizationLevel: 1
-              }
-            }
-          }
-        ]
+                optimizationLevel: 1,
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.(mp4)$/,
@@ -76,13 +76,13 @@ const common = {
             loader: "file-loader",
             options: {
               name: "[name].[ext]",
-              esModule: false
-            }
-          }
-        ]
-      }
-    ]
-  }
+              esModule: false,
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 
 module.exports = { HtmlWebpackPlugins, common };

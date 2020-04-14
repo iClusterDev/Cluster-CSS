@@ -9,11 +9,11 @@ module.exports = merge(common, {
   mode: "production",
   output: {
     filename: "[name]-[contenthash].boundle.min.js",
-    path: path.resolve(__dirname, "dist")
+    path: path.resolve(__dirname, "dist"),
   },
   stats: {
     children: false,
-    modules: false
+    modules: false,
   },
   optimization: {
     splitChunks: {
@@ -25,10 +25,10 @@ module.exports = merge(common, {
           name(module) {
             const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
             return `vendor-${packageName.replace("@", "")}`;
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -36,8 +36,8 @@ module.exports = merge(common, {
     ...HtmlWebpackPlugins("./src", {
       removeAttributeQuotes: true,
       collapseWhitespace: true,
-      removeComments: true
-    })
+      removeComments: true,
+    }),
   ],
   module: {
     rules: [
@@ -47,9 +47,9 @@ module.exports = merge(common, {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env"]
-          }
-        }
+            presets: ["@babel/preset-env"],
+          },
+        },
       },
       {
         test: /\.scss$/,
@@ -57,12 +57,12 @@ module.exports = merge(common, {
           MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
-            options: { importLoaders: 1 }
+            options: { importLoaders: 1 },
           },
           { loader: "postcss-loader" },
-          { loader: "sass-loader" }
-        ]
-      }
-    ]
-  }
+          { loader: "sass-loader" },
+        ],
+      },
+    ],
+  },
 });
