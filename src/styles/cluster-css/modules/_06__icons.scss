@@ -1719,3 +1719,14 @@ $icon-zoom-out: "\ea19";
     content: $icon-zoom-out;
   }
 }
+
+[class^="icon-"],
+[class*=" icon-"],
+i[class^="icon-"],
+i[class*=" icon-"],
+span[class^="icon-"],
+span[class*=" icon-"] {
+  // font-size: 1.5rem;
+  font-size: 1rem;
+  // margin: 0.5rem;
+}

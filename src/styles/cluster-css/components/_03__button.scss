@@ -28,6 +28,7 @@ input[type="button"].btn {
   $-btn-min-height: 3rem !default;
   $-btn-outlined-hover: lighten($btn__background, 50);
   $-btn-outlined-active: lighten($btn__background, 55);
+  $-btn-fab-size: 3.25rem !default;
 
   // reset
   font: inherit;
@@ -138,5 +139,29 @@ input[type="button"].btn {
   // block buttons
   &.btn-block {
     width: 100%;
+  }
+
+  // fab buttons
+  &.btn-fab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    width: $-btn-fab-size;
+    height: $-btn-fab-size;
+    min-width: $-btn-fab-size;
+    min-height: $-btn-fab-size;
+    border-radius: 100%;
+
+    [class^="icon-"],
+    [class*=" icon-"] {
+      margin: 0.25rem;
+    }
+  }
+
+  [class^="icon-"],
+  [class*=" icon-"] {
+    margin-right: 0.5rem;
   }
 }
