@@ -1,7 +1,8 @@
 /*
 navbar.scss
 dependencies:
-  - variables
+  - 00__variables
+  - 02__mixins
 classes:
   - fixed
   - larged
@@ -10,7 +11,7 @@ classes:
 */
 
 /*  EXAMPLE USAGE -----------------------------------------------------------------------
-<nav id="nav-bar" class="nav-bar white fixed large stacked centered elevation-1">
+<nav id="navbar" class="navbar white fixed large stacked centered elevation-1">
   <div class="container">
   <div id="nav-title" class="nav-title display-5">title</div>
   <div id="nav-menu" class="nav-menu btn btn-icon btn-squared transparent">
@@ -26,12 +27,19 @@ classes:
 </nav>
 */
 
-.nav-bar {
-  min-height: $ccss-nav-bar-min-height;
+// navbar
+$navbar__min-height: 4rem;
+$navbar__max-height: 14rem;
+$navbar__link-letter-spacing: 0 !default;
+$navbar__link-text-weight: 600 !default;
+$navbar__link-text-style: capitalize !default;
+
+.navbar {
+  min-height: $navbar__min-height;
   display: flex;
   align-items: center;
   flex-direction: row;
-  padding: 0 1rem;
+  width: 100%;
   z-index: 10;
 
   &.fixed {
@@ -41,49 +49,59 @@ classes:
     top: 0;
   }
 
-  .container {
+  .container,
+  .wrapper {
     padding: 0;
     height: 100%;
-    @extend .nav-bar;
+    display: flex;
+    align-items: baseline;
+    flex-direction: row;
   }
 
   .nav-title {
-    letter-spacing: $ccss-nav-title-letter-spacing;
-    text-transform: $ccss-nav-title-text-style;
-    font-weight: $ccss-nav-title-text-weight;
-    padding: 0 0.25rem;
-    margin: 0;
+    padding: 0 1rem;
   }
 
-  .nav-links {
+  .nav-menu {
     @include list-reset;
-    display: none;
-    padding: 0.5rem 0;
-    li {
-      letter-spacing: $ccss-nav-link-letter-spacing;
-      text-transform: $ccss-nav-link-text-style;
-      font-weight: $ccss-nav-link-text-weight;
-      padding: 0 1rem;
+    padding: 0 0.5rem;
+    display: flex;
+    align-items: center;
+    .nav-menu-item {
+      cursor: pointer;
+      margin: 0 0.5rem;
+      padding: 0 0.5rem;
     }
+    // padding: 0.5rem 0;
+    // li {
+    //   letter-spacing: $navbar__link-letter-spacing;
+    //   text-transform: $navbar__link-text-style;
+    //   font-weight: $navbar__link-text-weight;
+    //   padding: 0 1rem;
+
+    //   a {
+    //     color: $text-color !important;
+    //   }
+    // }
   }
 
   // FIXME
   // this could extend .btn?
-  .nav-menu {
-    position: absolute;
-    right: 0;
+  // .nav-menu {
+  //   position: absolute;
+  //   right: 0;
 
-    &.btn {
-      border: solid 2px transparent !important;
-      &:hover {
-        background-color: transparent !important;
-      }
-    }
-  }
+  //   &.btn {
+  //     border: solid 2px transparent !important;
+  //     &:hover {
+  //       background-color: transparent !important;
+  //     }
+  //   }
+  // }
 
   @include ccss-on-tablet-and-up {
     &.large {
-      height: $ccss-nav-bar-max-height;
+      height: $navbar__max-height;
     }
 
     &.stacked {
@@ -103,17 +121,17 @@ classes:
       }
     }
 
-    .nav-title {
-      padding: 0.5rem 1rem;
-    }
+    // .nav-title {
+    //   padding: 0.5rem 1rem;
+    // }
 
-    .nav-links {
-      display: flex;
-    }
+    // .nav-links {
+    //   display: flex;
+    // }
 
-    .nav-menu {
-      position: relative;
-      display: none;
-    }
+    // .nav-menu {
+    //   position: relative;
+    //   display: none;
+    // }
   }
 }

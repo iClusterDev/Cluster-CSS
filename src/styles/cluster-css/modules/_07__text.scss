@@ -10,7 +10,7 @@ dependencies: none
 $-text-transforms: uppercase, lowercase, capitalize;
 @each $-transform in $-text-transforms {
   .text-style-#{$-transform} {
-    text-transform: $-transform;
+    text-transform: $-transform !important;
   }
 }
 
@@ -23,7 +23,7 @@ $-text-weights: (
   "semibold": 600,
   "bold": 700,
   "extrabold": 800,
-  "black": 900
+  "black": 900,
 );
 @each $-name, $-weight in $-text-weights {
   .text-weight-#{$-name} {
