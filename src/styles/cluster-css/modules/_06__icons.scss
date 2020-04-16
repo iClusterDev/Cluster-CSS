@@ -1,3 +1,10 @@
+/*
+module: 06__icons.scss
+framework icons
+dependencies: 
+  - ../fonts
+*/
+
 $icomoon-font-family: "icomoon" !default;
 $icomoon-font-path: "cluster-css/fonts" !default;
 
@@ -1726,7 +1733,5 @@ i[class^="icon-"],
 i[class*=" icon-"],
 span[class^="icon-"],
 span[class*=" icon-"] {
-  // font-size: 1.5rem;
   font-size: 1rem;
-  // margin: 0.5rem;
 }

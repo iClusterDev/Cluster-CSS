@@ -1,0 +1,131 @@
+/*
+module: 08__link.scss
+handlers for links including 
+animations
+dependencies: 00__variables
+classes: 
+  .link
+  → .active
+
+  .nav-link
+    → .underline
+    → .indicator
+    → .active
+*/
+$-link-padding-x: 0.25rem;
+$-link-padding-y: 0;
+
+a,
+a.link {
+  position: relative;
+  &:link,
+  &:visited {
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none;
+    transition: all 0.25s;
+    padding: $-link-padding-y $-link-padding-x;
+    color: $link-color_default;
+  }
+
+  &.active,
+  &:hover,
+  &:active {
+    color: $link-color-hover;
+  }
+}
+
+a.nav-link {
+  @extend .link;
+
+  &:link,
+  &:visited {
+    color: $nav-link-color_default;
+  }
+
+  &.active,
+  &:hover,
+  &:active {
+    color: $nav-link-color-hover;
+  }
+
+  &.indicator {
+    @mixin -indicator-base {
+      content: "";
+      position: absolute;
+      bottom: -(1rem / 1.25);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 8px;
+    }
+    &:link,
+    &:visited {
+      position: relative;
+      &::after {
+        @include -indicator-base;
+        opacity: 0;
+        transition: opacity 0.5s;
+        background-color: $nav-link-color_default;
+      }
+    }
+
+    &:hover,
+    &:active {
+      &::after {
+        opacity: 1;
+        background-color: $nav-link-color_hover;
+      }
+    }
+
+    &.active {
+      position: relative;
+      &::after {
+        @include -indicator-base;
+        opacity: 1;
+        background-color: $nav-link-color_hover;
+      }
+    }
+  }
+
+  &.underline {
+    @mixin -underline-base {
+      content: "";
+      position: absolute;
+      left: $-link-padding-x;
+      bottom: -(1rem / 1.25);
+      height: 2px;
+      width: calc(100% - (2 * #{$-link-padding-x}));
+    }
+
+    &:link,
+    &:visited {
+      position: relative;
+      &::after {
+        @include -underline-base();
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.25s;
+        background-color: $nav-link-color_default;
+      }
+    }
+
+    &:hover,
+    &:active {
+      &::after {
+        transform-origin: left;
+        transform: scaleX(1);
+        background-color: $nav-link-color_hover;
+      }
+    }
+
+    &.active {
+      position: relative;
+      &::after {
+        @include -underline-base;
+        transform: scaleX(1);
+        background-color: $nav-link-color_hover;
+      }
+    }
+  }
+}

@@ -1,38 +1,21 @@
 /*
-navbar.scss
-dependencies:
-  - 00__variables
-  - 02__mixins
-classes:
-  - fixed
-  - larged
-  - stacked
-    - centered
-*/
-
-/*  EXAMPLE USAGE -----------------------------------------------------------------------
-<nav id="navbar" class="navbar white fixed large stacked centered elevation-1">
-  <div class="container">
-  <div id="nav-title" class="nav-title display-5">title</div>
-  <div id="nav-menu" class="nav-menu btn btn-icon btn-squared transparent">
-  <img class="icon" src="./images/icon-hamburger.svg" alt="icon-hamburger" />
-  </div>
-    <ul id="nav-links" class="nav-links">
-    <li class="text-small"><a href="#" class="underline">link1</a></li>
-    <li class="text-small"><a href="#" class="underline">link2</a></li>
-    <li class="text-small"><a href="#" class="underline">link3</a></li>
-    <li class="text-small"><a href="#" class="underline">link4</a></li>
-    </ul>
-  </div>
-</nav>
+component: 05__navbar
+dependencies: 00__variables
+dependencies: ./modules/01__mixins
+classes: 
+  .navbar
+  → .fixed
+  → .large
+  → .stacked
+    → .centered
 */
 
 // navbar
 $navbar__min-height: 4rem;
-$navbar__max-height: 14rem;
-$navbar__link-letter-spacing: 0 !default;
-$navbar__link-text-weight: 600 !default;
-$navbar__link-text-style: capitalize !default;
+$navbar__max-height: 8rem;
+// $navbar__link-letter-spacing: 0 !default;
+// $navbar__link-text-weight: 600 !default;
+// $navbar__link-text-style: capitalize !default;
 
 .navbar {
   min-height: $navbar__min-height;
@@ -42,17 +25,8 @@ $navbar__link-text-style: capitalize !default;
   width: 100%;
   z-index: 10;
 
-  &.fixed {
-    position: fixed;
-    width: 100%;
-    left: 0;
-    top: 0;
-  }
-
-  .container,
-  .wrapper {
+  .container {
     padding: 0;
-    height: 100%;
     display: flex;
     align-items: baseline;
     flex-direction: row;
@@ -64,74 +38,63 @@ $navbar__link-text-style: capitalize !default;
 
   .nav-menu {
     @include list-reset;
-    padding: 0 0.5rem;
-    display: flex;
+    width: 100%;
+    display: none;
     align-items: center;
+
+    @include on-laptop-and-up {
+      display: flex;
+
+      &.left {
+        justify-content: flex-start;
+      }
+
+      &.right {
+        justify-content: flex-end;
+      }
+
+      &.center {
+        justify-content: center;
+      }
+    }
+
     .nav-menu-item {
       cursor: pointer;
       margin: 0 0.5rem;
       padding: 0 0.5rem;
     }
-    // padding: 0.5rem 0;
-    // li {
-    //   letter-spacing: $navbar__link-letter-spacing;
-    //   text-transform: $navbar__link-text-style;
-    //   font-weight: $navbar__link-text-weight;
-    //   padding: 0 1rem;
-
-    //   a {
-    //     color: $text-color !important;
-    //   }
-    // }
   }
 
-  // FIXME
-  // this could extend .btn?
-  // .nav-menu {
-  //   position: absolute;
-  //   right: 0;
+  &.fixed {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
 
-  //   &.btn {
-  //     border: solid 2px transparent !important;
-  //     &:hover {
-  //       background-color: transparent !important;
-  //     }
-  //   }
-  // }
+  &.large {
+    height: $navbar__max-height;
+  }
 
-  @include ccss-on-tablet-and-up {
-    &.large {
-      height: $navbar__max-height;
-    }
+  &.stacked {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 
-    &.stacked {
+    .container {
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
 
-      .container {
-        @extend .stacked;
-      }
-
-      &.centered {
-        align-items: center;
-        .container {
-          @extend .centered;
-        }
+      > * {
+        margin: 0.25rem 0;
       }
     }
 
-    // .nav-title {
-    //   padding: 0.5rem 1rem;
-    // }
-
-    // .nav-links {
-    //   display: flex;
-    // }
-
-    // .nav-menu {
-    //   position: relative;
-    //   display: none;
-    // }
+    &.centered {
+      .container {
+        align-items: center;
+      }
+    }
   }
 }

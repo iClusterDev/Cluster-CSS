@@ -1,8 +1,7 @@
 /*
-module: 04_spacing.scss
+module: 10__spacing.scss
 all rules and helpers
 for handling the spacing between elements
-using paddings and margins
 dependencies: none
 */
 
@@ -59,7 +58,7 @@ $-space-values: (
   "t": top,
   "r": right,
   "b": bottom,
-  "l": left
+  "l": left,
 );
 @for $-space from 0 to 7 {
   @each $-name, $-value in $-space-values {

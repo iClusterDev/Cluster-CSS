@@ -7,13 +7,13 @@ dependencies:
 */
 
 html {
-  font-size: $text-mobile-size;
+  font-size: $__text-mobile-size;
 }
 
 body {
   color: $text-color;
-  line-height: $body-line-height;
-  font-family: $font-primary-stack;
+  line-height: $__body-line-height;
+  font-family: $__font-primary-stack;
 }
 
 p {
@@ -38,7 +38,7 @@ h4,
 h5,
 .display-5 {
   margin: 2.75rem 0 1rem;
-  line-height: $head-line-height;
+  line-height: $__head-line-height;
 }
 
 h1,
@@ -46,20 +46,20 @@ h1,
   margin-top: 0;
 }
 
-@include typescale($text-mobile-size, $type-scale-ratio);
+@include typescale($__text-mobile-size, $__type-scale-ratio);
 
 @include on-tablet-and-up {
-  $-base-size: $text-tablet-size;
+  $-base-size: $__text-tablet-size;
   html {
     font-size: $-base-size;
   }
-  @include typescale($-base-size, $type-scale-ratio);
+  @include typescale($-base-size, $__type-scale-ratio);
 }
 
 @include on-laptop-and-up {
-  $-base-size: $text-laptop-size;
+  $-base-size: $__text-laptop-size;
   html {
     font-size: $-base-size;
   }
-  @include typescale($-base-size, $type-scale-ratio);
+  @include typescale($-base-size, $__type-scale-ratio);
 }

@@ -1,5 +1,5 @@
 /*
-module: 07_flex.scss
+module: 11__flex.scss
 the full flexbox set of rules
 dependencies: none
 */
@@ -18,7 +18,7 @@ dependencies: none
     "end": flex-end,
     "center": center,
     "space-between": space-between,
-    "space-around": space-around
+    "space-around": space-around,
   );
   @each $-name, $-value in $-flex-justify-values {
     &.justify-#{$-name} {
@@ -31,7 +31,7 @@ dependencies: none
     "end": flex-end,
     "center": center,
     "baseline": baseline,
-    "stretch": stretch
+    "stretch": stretch,
   );
   @each $-name, $-value in $-flex-align-values {
     &.align-#{$-name} {
@@ -49,7 +49,7 @@ dependencies: none
     "center": center,
     "space-between": space-between,
     "space-around": space-around,
-    "stretch": stretch
+    "stretch": stretch,
   );
   @each $-name, $-value in $-flex-align-content-values {
     &.align-content-#{$-name} {
@@ -60,7 +60,7 @@ dependencies: none
   $-flex-wrap-values: (
     "wrap": wrap,
     "nowrap": nowrap,
-    "wrap-reverse": wrap-reverse
+    "wrap-reverse": wrap-reverse,
   );
   @each $-name, $-value in $-flex-wrap-values {
     &.flex-#{$-name} {

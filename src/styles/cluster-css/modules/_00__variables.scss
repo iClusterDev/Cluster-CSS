@@ -1,15 +1,15 @@
 /*
 typography variables
 */
-$font-primary-stack: "Montserrat", "Helvetica Neue", sans-serif !default;
-$font-secondary-stack: "Montserrat", "serif" !default;
+$__font-primary-stack: "Montserrat", "Helvetica Neue", sans-serif !default;
+$__font-secondary-stack: "Montserrat", "serif" !default;
 
-$type-scale-ratio: 1.333 !default;
-$text-mobile-size: 14px !default;
-$text-tablet-size: 15px !default;
-$text-laptop-size: 16px !default;
-$body-line-height: 1.75 !default;
-$head-line-height: 1.15 !default;
+$__type-scale-ratio: 1.333 !default;
+$__text-mobile-size: 14px !default;
+$__text-tablet-size: 15px !default;
+$__text-laptop-size: 16px !default;
+$__body-line-height: 1.75 !default;
+$__head-line-height: 1.15 !default;
 
 /*
 breakpoints
@@ -22,13 +22,19 @@ $large-screen-max-width: 1440px;
 /*
 theme variables
 */
+$mutedblack-color: rgba(0, 0, 0, 0.57) !default;
+$offblack-color: rgba(0, 0, 0, 0.87) !default;
+$text-color: $offblack-color !default;
+
 $primary-color: #b8336a !default;
 $secondary-color: #2e5266 !default;
 $tertiary-color: #8d99ae !default;
-$offblack-color: rgba(0, 0, 0, 0.87) !default;
-$mutedblack-color: rgba(0, 0, 0, 0.57) !default;
+
 $success-color: #4caf50 !default;
 $warning-color: #ffeb3b !default;
 $error-color: #f44336 !default;
-$link-color: #039be5 !default;
-$text-color: $offblack-color !default;
+
+$link-color-default: #039be5 !default;
+$link-color-hover: lighten($link-color-default, 25) !default;
+$nav-link-color-default: $secondary-color !default;
+$nav-link-color-hover: $nav-link-color-default !default;
