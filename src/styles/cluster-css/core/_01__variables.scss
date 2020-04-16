@@ -25,16 +25,29 @@ theme variables
 $mutedblack-color: rgba(0, 0, 0, 0.57) !default;
 $offblack-color: rgba(0, 0, 0, 0.87) !default;
 $text-color: $offblack-color !default;
-
 $primary-color: #b8336a !default;
 $secondary-color: #2e5266 !default;
 $tertiary-color: #8d99ae !default;
-
 $success-color: #4caf50 !default;
 $warning-color: #ffeb3b !default;
 $error-color: #f44336 !default;
-
 $link-color-default: #039be5 !default;
 $link-color-hover: lighten($link-color-default, 25) !default;
 $nav-link-color-default: $secondary-color !default;
 $nav-link-color-hover: $nav-link-color-default !default;
+
+/*
+component: 01__container
+*/
+$container__max-width: 992px !default;
+$container__padding: 0 1rem !default;
+
+/*
+component: 03__buttom
+*/
+$btn__background: $primary-color !default;
+$btn__font-size: 0.8rem;
+$btn__font-style: uppercase !default;
+$btn__font-weight: 500 !default;
+$btn__border-radius: 2px !default;
+$btn__letter-spacing: 0px !default;
