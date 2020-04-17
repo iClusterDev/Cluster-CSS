@@ -1,19 +1,34 @@
 const template = document.createElement("template");
 template.innerHTML = `
-  <style>
-    h3 { color: red; }
+  <style lang="scss">
+    .container,
+    .wrapper {
+      display: block;
+      position: relative;
+      margin: 0 auto;
+      width: 100%;
+      padding: $container__padding;
+      max-width: $container__max-width;
+    
+      &.fill-height {
+        height: 100%;
+      }
+    
+      &.fill-width {
+        margin: 0;
+        max-width: 100%;
+      }
+    
+      &.fill-space {
+        margin: 0;
+        max-width: 100%;
+        height: 100%;
+      }
+    }
   </style>
 
-  <div class="card">
-    <img/>
-    <div>
-      <h3 class="name"></h3>
-      <div class="info">
-        <p><slot name="email"></slot></p>
-        <p><slot name="phone"></slot></p>
-      </div>
-      <button id="toggle">Hide Info</button>
-    </div>
+  <div class="container">
+    <slot></slot>
   </div>
 `;
 
@@ -26,32 +41,6 @@ class Container extends HTMLElement {
     this.attachShadow({ mode: "open" });
 
     this.shadowRoot.appendChild(template.content.cloneNode(true));
-
-    this.shadowRoot.querySelector("h3").innerText = this.getAttribute("name");
-
-    this.shadowRoot.querySelector("img").src = this.getAttribute("avatar");
-  }
-
-  toggleInfo() {
-    this.showInfo = !this.showInfo;
-    const info = this.shadowRoot.querySelector(".info");
-    const toggle = this.shadowRoot.querySelector("#toggle");
-
-    if (this.showInfo) {
-      info.style.display = "block";
-      toggle.innerText = "Hide Info";
-    } else {
-      info.style.display = "none";
-      toggle.innerText = "Show Info";
-    }
-  }
-
-  connectedCallback() {
-    this.shadowRoot.querySelector("#toggle").addEventListener("click", () => this.toggleInfo());
-  }
-
-  disconnectedCallback() {
-    this.shadowRoot.querySelector("#toggle").removeEventListener();
   }
 }
 
