@@ -29,6 +29,7 @@ input[type="button"].btn {
   $-btn-outlined-hover: lighten($btn__background, 50);
   $-btn-outlined-active: lighten($btn__background, 55);
   $-btn-fab-size: 3.25rem !default;
+  $-btn-fab-size-small: 2.25rem !default;
 
   // reset
   font: inherit;
@@ -153,6 +154,14 @@ input[type="button"].btn {
     min-width: $-btn-fab-size;
     min-height: $-btn-fab-size;
     border-radius: 100%;
+
+    &.btn-small {
+      width: $-btn-fab-size-small;
+      height: $-btn-fab-size-small;
+      min-width: $-btn-fab-size-small;
+      min-height: $-btn-fab-size-small;
+      font-size: 0.8rem;
+    }
 
     [class^="icon-"],
     [class*=" icon-"] {

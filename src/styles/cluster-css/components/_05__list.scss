@@ -1,0 +1,79 @@
+/*
+component: 05__list
+dependencies: none
+classes: 
+  .list
+*/
+
+// .list {
+//   padding: 0.5rem;
+
+//   .list-header,
+//   .list-item {
+//     // border: solid 1px;
+//     margin: 0.25rem 0;
+//     padding: 1rem;
+//   }
+
+//   &.list-dense {
+//     .list-header,
+//     .list-item {
+//       padding: 0.5rem 1rem;
+//     }
+//   }
+
+//   .list-items {
+//     @include list-reset;
+//     cursor: pointer;
+
+//     .list-item {
+//       &:hover {
+//         background-color: lighten($mutedblack-color, $amount: 90);
+//       }
+//     }
+//   }
+// }
+
+$list__background-color: white;
+
+.list {
+  @include list-reset;
+  background-color: $list__background-color;
+  position: relative;
+  padding: 0.5rem;
+  border: solid 1px;
+
+  .list-item {
+    cursor: pointer;
+    padding: 1rem;
+
+    &:hover {
+      background-color: darken($list__background-color, $amount: 5);
+    }
+  }
+
+  &.list-disabled {
+    .list-item {
+      position: relative;
+      cursor: auto;
+
+      &:hover {
+        background-color: $list__background-color;
+      }
+    }
+  }
+
+  &.list-dense {
+    padding: 0.25rem 0.5rem;
+    .list-item {
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  &.list-slim {
+    padding: 0.125rem 0.5rem;
+    .list-item {
+      padding: 0.25rem 1rem;
+    }
+  }
+}

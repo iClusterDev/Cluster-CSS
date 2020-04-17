@@ -1,0 +1,16 @@
+/*
+component: 07__divider
+dependencies: 00__variables
+classes: 
+  .divider
+*/
+
+.divider {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: lighten($mutedblack-color, 85);
+}
