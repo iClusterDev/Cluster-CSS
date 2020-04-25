@@ -3,52 +3,43 @@ component: 05__list
 dependencies: none
 classes: 
   .list
+  → .list-dense
+  → .list-disabled
+    → .list-item
 */
-
-// .list {
-//   padding: 0.5rem;
-
-//   .list-header,
-//   .list-item {
-//     // border: solid 1px;
-//     margin: 0.25rem 0;
-//     padding: 1rem;
-//   }
-
-//   &.list-dense {
-//     .list-header,
-//     .list-item {
-//       padding: 0.5rem 1rem;
-//     }
-//   }
-
-//   .list-items {
-//     @include list-reset;
-//     cursor: pointer;
-
-//     .list-item {
-//       &:hover {
-//         background-color: lighten($mutedblack-color, $amount: 90);
-//       }
-//     }
-//   }
-// }
 
 $list__background-color: white;
 
+$-list-padding-x: 0.5rem;
+$-list-padding-y: 0.5rem;
+$-list-padding: $-list-padding-x $-list-padding-y;
+
 .list {
   @include list-reset;
-  background-color: $list__background-color;
   position: relative;
-  padding: 0.5rem;
-  border: solid 1px;
+  padding: $-list-padding;
+  background-color: $list__background-color;
 
   .list-item {
     cursor: pointer;
-    padding: 1rem;
-
+    position: relative;
+    padding: $-list-padding-y 1rem;
     &:hover {
       background-color: darken($list__background-color, $amount: 5);
+    }
+  }
+
+  .list-divider {
+    width: calc(100% - #{$-list-padding-x} / 2);
+    height: 1px;
+    margin: 0.5rem 0;
+    background-color: lighten($mutedblack-color, 85);
+  }
+
+  &.list-dense {
+    // padding: 0.125rem 0.5rem;
+    .list-item {
+      padding: 0.25rem 1rem;
     }
   }
 
@@ -56,24 +47,9 @@ $list__background-color: white;
     .list-item {
       position: relative;
       cursor: auto;
-
       &:hover {
         background-color: $list__background-color;
       }
-    }
-  }
-
-  &.list-dense {
-    padding: 0.25rem 0.5rem;
-    .list-item {
-      padding: 0.5rem 1rem;
-    }
-  }
-
-  &.list-slim {
-    padding: 0.125rem 0.5rem;
-    .list-item {
-      padding: 0.25rem 1rem;
     }
   }
 }
