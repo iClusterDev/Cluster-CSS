@@ -1,72 +1,35 @@
 const path = require("path");
-const merge = require("webpack-merge");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { common } = require("./webpack.common");
-const { HtmlWebpackPlugins } = require("./webpack.common");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
-module.exports = merge(common, {
+module.exports = {
   mode: "production",
-  output: {
-    filename: "[name]-[contenthash].boundle.min.js",
-    path: path.resolve(__dirname, "dist"),
-  },
+  entry: path.resolve(__dirname, "main.js"),
   stats: {
     children: false,
     modules: false,
+    assets: false,
   },
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-      maxInitialRequests: Infinity,
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1];
-            return `vendor-${packageName.replace("@", "")}`;
-          },
-        },
-      },
-    },
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "boundle.js",
   },
   plugins: [
-    new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({ filename: "[name]-[contenthash].boundle.min.css" }),
-    ...HtmlWebpackPlugins("./src", {
-      removeAttributeQuotes: true,
-      collapseWhitespace: true,
-      removeComments: true,
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "index.html"),
     }),
   ],
   module: {
     rules: [
       {
-        test: /\.m?js$/,
-        exclude: /(node_modules)/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
-          },
-        },
+        test: /\.html$/,
+        use: "html-loader",
       },
       {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          { loader: "postcss-loader" },
-          { loader: "sass-loader" },
-        ],
-      },
-      {
-        test: /\.(eot|gif|otf|png|svg|ttf|woff)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: ["file-loader"],
+        test: /\.s[ac]ss$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader", { loader: "sass-loader", options: { implementation: require("sass") } }, "resolve-url-loader"],
       },
     ],
   },
-});
+};

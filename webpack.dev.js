@@ -1,34 +1,35 @@
-const merge = require("webpack-merge");
-const { common } = require("./webpack.common");
-const { HtmlWebpackPlugins } = require("./webpack.common");
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = merge(common, {
+module.exports = {
   mode: "development",
-  output: { filename: "[name].boundle.js" },
+  entry: path.resolve(__dirname, "main.js"),
   stats: {
     children: false,
     modules: false,
     assets: false,
   },
-  plugins: [...HtmlWebpackPlugins("./src")],
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "boundle.js",
+  },
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "index.html"),
+    }),
+  ],
   module: {
     rules: [
       {
-        test: /\.scss$/,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: { importLoaders: 1 },
-          },
-          "postcss-loader",
-          "sass-loader",
-        ],
+        test: /\.html$/,
+        use: "html-loader",
       },
       {
-        test: /\.(eot|gif|otf|png|svg|ttf|woff)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: ["file-loader"],
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", { loader: "sass-loader", options: { implementation: require("sass") } }, "resolve-url-loader"],
       },
     ],
   },
-});
+};
