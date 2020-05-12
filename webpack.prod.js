@@ -15,9 +15,11 @@ module.exports = {
     filename: "boundle.js",
   },
   plugins: [
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "cluster-css.min.css",
+    }),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, "index.html"),
+      template: path.resolve(__dirname, "src/index.html"),
     }),
   ],
   module: {
@@ -28,7 +30,13 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader", { loader: "sass-loader", options: { implementation: require("sass") } }, "resolve-url-loader"],
+        use: [
+          MiniCssExtractPlugin.loader,
+          { loader: "css-loader", options: { importLoaders: 1 } },
+          { loader: "postcss-loader" },
+          { loader: "sass-loader", options: { implementation: require("sass") } },
+          { loader: "resolve-url-loader" },
+        ],
       },
     ],
   },
