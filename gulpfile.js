@@ -1,16 +1,16 @@
 const { src, dest, series } = require("gulp");
 const del = require("del");
 const sass = require("gulp-sass");
+const rename = require("gulp-rename");
 const postcss = require("gulp-postcss");
 const sourcemaps = require("gulp-sourcemaps");
-const autoprefixer = require("autoprefixer");
 
 /**
  * clean the dist folder
  * before any re-build
  */
 const clean = async () => {
-  return del("./dist", { force: true });
+  return del("./css", { force: true });
 };
 
 /**
@@ -23,9 +23,10 @@ const scssCompile = () => {
   return src("./scss/cluster.scss")
     .pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
     .pipe(sourcemaps.init())
-    .pipe(postcss([autoprefixer()]))
+    .pipe(postcss())
+    .pipe(rename({ extname: ".min.css" }))
     .pipe(sourcemaps.write("."))
-    .pipe(dest("./dist"));
+    .pipe(dest("./css"));
 };
 
 /**
