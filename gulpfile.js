@@ -9,7 +9,7 @@ const autoprefixer = require("autoprefixer");
  * clean the dist folder
  * before any re-build
  */
-const clean = async (cleanCB) => {
+const clean = async () => {
   return del("./dist", { force: true });
 };
 
@@ -20,8 +20,8 @@ const clean = async (cleanCB) => {
  */
 sass.compiler = require("sass");
 const scssCompile = () => {
-  return src("./src/styles/main.scss")
-    .pipe(sass().on("error", sass.logError))
+  return src("./scss/cluster.scss")
+    .pipe(sass({ outputStyle: "compressed" }).on("error", sass.logError))
     .pipe(sourcemaps.init())
     .pipe(postcss([autoprefixer()]))
     .pipe(sourcemaps.write("."))
