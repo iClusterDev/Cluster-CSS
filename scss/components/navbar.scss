@@ -1,0 +1,102 @@
+/*
+component: navbar
+classes: 
+  .navbar
+  → .fixed
+  → .large
+  → .stacked
+    → .centered
+
+  navbar
+  variables.$navbar__min-height: 4rem;
+  variables.$navbar__max-height: 8rem;
+  variables.$navbar__link-letter-spacing: 0 !default;
+  variables.$navbar__link-text-weight: 600 !default;
+  variables.$navbar__link-text-style: capitalize !default;
+*/
+
+@use '../core/variables';
+@use '../core/mixins';
+
+.navbar {
+  position: relative;
+  min-height: variables.$navbar__min-height;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  z-index: 10;
+
+  .container {
+    padding: 0;
+    display: flex;
+    align-items: baseline;
+    flex-direction: row;
+  }
+
+  .nav-title {
+    padding: 0 1rem;
+  }
+
+  .nav-menu {
+    @include mixins.list-reset;
+    width: 100%;
+    display: none;
+    align-items: center;
+
+    @include mixins.on-laptop-and-up {
+      display: flex;
+
+      &.left {
+        justify-content: flex-start;
+      }
+
+      &.right {
+        justify-content: flex-end;
+      }
+
+      &.center {
+        justify-content: center;
+      }
+    }
+
+    .nav-menu-item {
+      cursor: pointer;
+      margin: 0 0.5rem;
+      padding: 0 0.5rem;
+    }
+  }
+
+  &.fixed {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+
+  &.large {
+    height: variables.$navbar__max-height;
+  }
+
+  &.stacked {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    .container {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+
+      > * {
+        margin: 0.25rem 0;
+      }
+    }
+
+    &.centered {
+      .container {
+        align-items: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+/*
+functions.scss
+global functions
+*/
+
+/*
+@type: math
+@params: &base: number, $exp: integer
+@returns: the $base to the power of $exp
+*/
+@function pow($base, $exp) {
+  $result: 1;
+  @for $iter from 0 to $exp {
+    $result: $result * $base;
+  }
+  @return $result;
+}

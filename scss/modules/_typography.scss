@@ -1,0 +1,66 @@
+/*
+module: _typography.scss
+base typography rules and helpers
+*/
+
+@use '../core/variables';
+@use '../core/mixins';
+
+html,
+:host {
+  font-size: variables.$text-mobile-size;
+  font-family: variables.$font-primary-stack;
+}
+
+body {
+  color: variables.$text-color;
+  line-height: variables.$body-line-height;
+}
+
+p {
+  margin-bottom: 1.25em;
+
+  &.large-body {
+    font-size: 1.2rem;
+  }
+  &.small-body {
+    font-size: 0.8rem;
+  }
+}
+
+h1,
+.display-1,
+h2,
+.display-2,
+h3,
+.display-3,
+h4,
+.display-4,
+h5,
+.display-5 {
+  margin: 2.75rem 0 1rem;
+  line-height: variables.$head-line-height;
+}
+
+h1,
+.display-1 {
+  margin-top: 0;
+}
+
+@include mixins.typescale(variables.$text-mobile-size, variables.$type-scale-ratio);
+
+@include mixins.on-tablet-and-up {
+  $-base-size: variables.$text-tablet-size;
+  html {
+    font-size: $-base-size;
+  }
+  @include mixins.typescale($-base-size, variables.$type-scale-ratio);
+}
+
+@include mixins.on-laptop-and-up {
+  $-base-size: variables.$text-laptop-size;
+  html {
+    font-size: $-base-size;
+  }
+  @include mixins.typescale($-base-size, variables.$type-scale-ratio);
+}

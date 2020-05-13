@@ -1,0 +1,25 @@
+/*
+module: _globals.scss
+global rules
+dependencies: ./core/normailze
+*/
+
+@import "../../node_modules/normalize-scss/sass/normalize";
+
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+header,
+main,
+footer {
+  position: relative;
+}

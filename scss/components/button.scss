@@ -1,0 +1,163 @@
+/*
+component: buttom
+classes: 
+  .btn
+  → .outlined
+  → .text
+  → .disabled
+  → .large
+  → .small
+  → .squared
+  → .rounded
+  → .block
+  → .raised
+*/
+
+@use '../core/variables';
+
+.btn,
+a.btn,
+button.btn,
+input[type="submit"].btn,
+input[type="button"].btn {
+  $-btn-color: lighten(variables.$btn__background, 100) !default;
+  $-btn-padding: 1.5rem !default;
+  $-btn-min-width: 6rem !default;
+  $-btn-min-height: 3rem !default;
+  $-btn-outlined-hover: lighten(variables.$btn__background, 50);
+  $-btn-outlined-active: lighten(variables.$btn__background, 55);
+  $-btn-fab-size: 3.25rem !default;
+  $-btn-fab-size-small: 2.25rem !default;
+
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  min-height: $-btn-min-height;
+  min-width: $-btn-min-width;
+  padding: 0 $-btn-padding;
+  margin: 0;
+  color: $-btn-color !important;
+  border: solid 1px transparent;
+  font-size: variables.$btn__font-size;
+  font-weight: variables.$btn__font-weight;
+  border-radius: variables.$btn__border-radius;
+  letter-spacing: variables.$btn__letter-spacing;
+  text-transform: variables.$btn__font-style;
+  background-color: variables.$btn__background;
+  transition: all 0.2s;
+  &:hover {
+    color: $-btn-color;
+    background-color: lighten(variables.$btn__background, 10);
+    &:active {
+      background-color: lighten(variables.$btn__background, 20);
+    }
+  }
+  &.disabled {
+    opacity: 40%;
+    box-shadow: none !important;
+    background-color: variables.$btn__background !important;
+    cursor: default;
+  }
+
+  &.raised {
+    $-btn-raised-shadow: 0 3px 5px 0px rgba(0, 0, 0, 0.72) !default;
+    &:hover {
+      box-shadow: $-btn-raised-shadow;
+      &:active {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &.outlined {
+    box-shadow: none;
+    color: variables.$btn__background !important;
+    border-color: variables.$btn__background;
+    background-color: transparent;
+    &:hover {
+      background-color: $-btn-outlined-hover;
+      &:active {
+        background-color: $-btn-outlined-active;
+      }
+    }
+    &.disabled {
+      background-color: transparent !important;
+    }
+  }
+
+  &.text {
+    box-shadow: none;
+    color: variables.$btn__background !important;
+    border-color: transparent;
+    background-color: transparent;
+    &:hover {
+      background-color: $-btn-outlined-hover;
+      &:active {
+        background-color: $-btn-outlined-active;
+      }
+    }
+    &.disabled {
+      background-color: transparent !important;
+    }
+  }
+
+  &.large {
+    padding: 0 calc(#{$-btn-padding} * 2);
+    min-height: calc(#{$-btn-min-height} * 1.25);
+  }
+
+  &.small {
+    padding: 0 calc(#{$-btn-padding} / 2);
+    min-height: calc(#{$-btn-min-height} / 1.25);
+    font-size: 0.8rem;
+  }
+
+  &.rounded {
+    border-radius: $-btn-min-width;
+  }
+
+  &.squared {
+    border-radius: 0;
+  }
+
+  &.block {
+    width: 100%;
+  }
+
+  &.fab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    width: $-btn-fab-size;
+    height: $-btn-fab-size;
+    min-width: $-btn-fab-size;
+    min-height: $-btn-fab-size;
+    border-radius: 100%;
+
+    &.small {
+      width: $-btn-fab-size-small;
+      height: $-btn-fab-size-small;
+      min-width: $-btn-fab-size-small;
+      min-height: $-btn-fab-size-small;
+      font-size: 0.8rem;
+    }
+
+    [class^="icon-"],
+    [class*=" icon-"] {
+      margin: 0.25rem;
+    }
+  }
+
+  [class^="icon-"],
+  [class*=" icon-"] {
+    margin-right: 0.5rem;
+  }
+}
